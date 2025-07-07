@@ -15,7 +15,7 @@ export interface FoodInfo {
 })
 export class AiService {
   private http = inject(HttpClient);
-  private apiKey = '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';
+  private apiKey = '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';
   private apiUrl = 'https://openrouter.ai/api/v1/chat/completions';
 
   getFoodInfo(foodName: string): Observable<FoodInfo> {

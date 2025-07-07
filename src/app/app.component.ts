@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { AiService, FoodInfo } from './services/ai.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -9,13 +9,15 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule],
   templateUrl: './app.component.html',
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   foodName = signal('');
   result = signal<FoodInfo | null>(null);
   loading = signal(false);
 
   constructor(private ai: AiService) {}
-
+  ngOnInit(): void {
+    console.log(this.result());
+  }
   search() {
     const food = this.foodName();
     if (!food.trim()) return;

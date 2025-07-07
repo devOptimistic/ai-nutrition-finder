@@ -1,16 +1,31 @@
 <div class="p-4 max-w-xl mx-auto text-center">
-  <h1 class="text-2xl font-bold mb-4">AI Calorie Finder 🍽️</h1>
+  <h1 class="text-2xl font-bold mb-4">کالری یاب 🍽️</h1>
 
   <input [(ngModel)]="foodName" placeholder="مثلاً قرمه سبزی" class="border p-2 w-full mb-2" />
-  <button (click)="search()" class="bg-blue-500 text-white px-4 py-2 rounded">جستجو</button>
+  <button (click)="search()" class="bg-blue-500 text-white px-4 py-2 rounded mt-2">جستجو</button>
 
-  <div *ngIf="loading" class="mt-4">در حال پردازش...</div>
-
-  <div *ngIf="result" class="mt-4 text-left bg-gray-100 p-4 rounded">
-    <p><strong>نام:</strong> {{ result()?.name }}</p>
-    <p><strong>کالری:</strong> {{ result()?.calories }}</p>
-    <p><strong>پروتئین:</strong> {{ result()?.protein }}</p>
-    <p><strong>چربی:</strong> {{ result()?.fat }}</p>
-    <p><strong>کربوهیدرات:</strong> {{ result()?.carbs }}</p>
-  </div>
-</div>
+  <div *ngIf="loading()" class="mt-4">در حال پردازش...</div>
+  <table *ngIf="result()" class="table-auto border-collapse border border-gray-400 w-full text-center mt-5">
+  <tbody>
+    <tr>
+      <td class="border border-gray-300 px-4 py-2">نام</td>
+      <td class="border border-gray-300 px-4 py-2">{{ result()?.name }}</td>
+    </tr>
+    <tr class="bg-gray-50">
+      <td class="border border-gray-300 px-4 py-2">کالری</td>
+      <td class="border border-gray-300 px-4 py-2">{{ result()?.calories }}</td>
+    </tr>
+    <tr>
+      <td class="border border-gray-300 px-4 py-2">پروتئین</td>
+      <td class="border border-gray-300 px-4 py-2">{{ result()?.protein }}</td>
+    </tr>
+    <tr class="bg-gray-50">
+      <td class="border border-gray-300 px-4 py-2">چربی</td>
+      <td class="border border-gray-300 px-4 py-2">{{ result()?.fat }}</td>
+    </tr>
+    <tr>
+      <td class="border border-gray-300 px-4 py-2">کربوهیدرات</td>
+      <td class="border border-gray-300 px-4 py-2">{{ result()?.carbs }}</td>
+    </tr>
+  </tbody>
+</table>
